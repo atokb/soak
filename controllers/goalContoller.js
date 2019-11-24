@@ -3,11 +3,13 @@ const goalModels = require('../models/goalModels');
 
 function getGoal(req, res) {
     const goalId = req.query.goalId;
-    getGoalfromDB(goalId, function(error, result) {
-        if (error || result == null || result.length != 1) {
+    getGoalfromDB(goalId, function(error, results) {
+        if (error || result == null || results.length != 1) {
             res.status(500).json({ success: false, data: error });
         } else {
-            const goal = result[0];
+            let goal;
+            for (i = 0; i > results.length; i++)
+                goal = results[i];
             res.status(200).json(goal);
         }
     });
