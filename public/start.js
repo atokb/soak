@@ -16,6 +16,14 @@ function login(req, res) {
     });
 }
 
+function signUp() {
+    $.get("/signUp", function(req, res) {});
+}
+
+function editRoutine() {
+    $.get("/editRoutine", function(req, res) {});
+}
+
 function showOptions() {
     console.log("Getting Options");
 

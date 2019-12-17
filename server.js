@@ -13,10 +13,27 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({ secret: 'it-is-a-secret', saveUninitialized: true, resave: true }));
 
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/soak.html'));
+});
+app.get('/loggedIn', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/soak-start.html'));
+});
+app.get('/routines', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/soak_routine.html'));
+});
+app.get('/signUp', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/soak_signup.html'));
+});
+app.get('/editRoutine', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/soak_edit.html'));
+});
+
 app.get('/getGoals', goalController.getGoals);
 app.get('/getRoutine', routineController.getRoutine);
 
 app.post('/login', userController.findUser);
+app.post('/register', userController.registerUser);
 
 
 app.listen(PORT, function() {

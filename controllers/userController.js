@@ -30,5 +30,6 @@ function registerUser(req, res) {
 }
 
 module.exports = {
-    findUser: findUser
+    findUser: findUser,
+    registerUser: registerUser
 }
