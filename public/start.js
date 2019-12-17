@@ -20,6 +20,16 @@ function signUp() {
     $.get("/signUp", function(req, res) {});
 }
 
+function register() {
+    $.post("/register", params, function(result) {
+        if (result && result.success) {
+            res.location('soak.html');
+        } else {
+            $("#status").text("Error registering user.");
+        }
+    });
+}
+
 function editRoutine() {
     $.get("/editRoutine", function(req, res) {});
 }

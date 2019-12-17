@@ -27,6 +27,13 @@ function registerUser(req, res) {
     userModel.registerUser(email, password, firstname, lastname, function(error, results) {
         res.json(results);
     });
+
+    if (request.body.email == email && request.body.password == password) {
+        request.session.user = request.body.email;
+        result = { success: true };
+    }
+
+    response.json(result);
 }
 
 module.exports = {
